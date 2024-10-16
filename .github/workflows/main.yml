@@ -40,6 +40,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            cd /path/to/your/app
+            cd /path/to/your/app || exit
+            git pull origin main
+            echo "Dependencies installed:"
             npm install
-            pm2 restart all || pm2 start npm --name "app-name" -- start
+            pm2 restart "app-name" || pm2 start npm --name "app-name" -- start
