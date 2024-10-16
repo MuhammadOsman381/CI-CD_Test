@@ -41,6 +41,5 @@ jobs:
           port: 22
           script: |
             git pull origin main
-            echo "Dependencies installed:"
             npm install
-            pm2 restart "app-name" || pm2 start npm --name "app-name" -- start
+            pm2 restart "CI-CD_Test" || pm2 start npm --name "CI-CD_Test" -- start
