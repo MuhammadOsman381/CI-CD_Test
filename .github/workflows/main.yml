@@ -37,8 +37,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            cd ../../
-            npm install -g pm2
             git pull origin main
+            cd CI-CD_Test
+            npm install -g pm2
             npm install
             pm2 restart "app.js" || pm2 start npm --name "app.js" -- start
